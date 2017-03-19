@@ -52,13 +52,19 @@ Object.defineProperty(exports, "__esModule", {
 var ui = {
     renderPosts: function renderPosts(posts) {
         var elements = posts.map(function (post) {
-            return articleTemplate;
+            var title = post.title,
+                lastReply = post.lastReply;
+
+            return articleTemplate(title, lastReply);
         });
         var target = document.querySelector(".container");
-        target.innerHTML = elements;
+        target.innerHTML = elements.join("");
     }
 };
-var articleTemplate = "\n    <article class='post'>\n    <h2 class='post-title'>\n    In Hybrid moments, give me a moment\n    </h2>\n    <p class=\"post-meta\">\n    last reply on July 15, 1997 \n    </p>\n    </article>";
+function articleTemplate(title, lastReply) {
+    var template = "\n    <article class='post'>\n    <h2 class='post-title'>\n    " + title + "\n    </h2>\n    <p class=\"post-meta\">\n    " + lastReply + "\n    </p>\n    </article>";
+    return template;
+}
 exports.default = ui;
 
 },{}]},{},[1]);
