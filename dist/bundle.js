@@ -1100,15 +1100,18 @@ exports.uriFragmentInHTMLData = exports.uriComponentInHTMLData;
 exports.uriFragmentInHTMLComment = exports.uriComponentInHTMLComment;
 
 },{}],2:[function(require,module,exports){
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+
+var _constants = require('./constants');
+
 var API = {
     fetch: function fetch(path) {
         return new Promise(function (resolve, reject) {
-            var uri = "http://localhost:3000/" + path;
+            var uri = _constants.BASE_URI + '/' + path;
             var request = new XMLHttpRequest();
             request.open('GET', uri, true);
             request.onload = function () {
@@ -1128,7 +1131,7 @@ var API = {
 
 exports.default = API;
 
-},{}],3:[function(require,module,exports){
+},{"./constants":4}],3:[function(require,module,exports){
 'use strict';
 
 var _post = require('./post');
@@ -1153,7 +1156,17 @@ _users2.default.findActive().then(_ui2.default.renderUsers).catch(function (erro
     console.log(error);
 });
 
-},{"./post":4,"./ui":5,"./users":6}],4:[function(require,module,exports){
+},{"./post":5,"./ui":6,"./users":7}],4:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var BASE_URI = 'http://localhost:3000';
+
+exports.BASE_URI = BASE_URI;
+
+},{}],5:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1174,7 +1187,7 @@ var Post = {
 
 exports.default = Post;
 
-},{"./api":2}],5:[function(require,module,exports){
+},{"./api":2}],6:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1224,7 +1237,7 @@ function userList(name, avatar) {
 }
 exports.default = ui;
 
-},{"xss-filters":1}],6:[function(require,module,exports){
+},{"xss-filters":1}],7:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
