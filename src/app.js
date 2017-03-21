@@ -2,6 +2,7 @@ import Post from './post';
 import Users from  './users';
 import ui from './ui';
 
+
 Post.findAll()
     .then(ui.renderPosts)
     .catch((error)=> {
